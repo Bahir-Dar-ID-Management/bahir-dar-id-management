@@ -1,3 +1,41 @@
+/**
+ * @swagger
+ * /digitalIds:
+ *   get:
+ *     summary: Retrieve a list of digital IDs
+ *     description: Retrieve a list of digital IDs
+ *     responses:
+ *       200:
+ *         description: A list of digital IDs
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/DigitalId'
+ * 
+ * /digitalIds/{id}:
+ *   get:
+ *     summary: Get a specific digital ID
+ *     description: Get a specific digital ID by ID
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: ID of the digital ID
+ *     responses:
+ *       200:
+ *         description: A single digital ID
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/DigitalId'
+ *       404:
+ *         description: Digital ID not found
+ */
+
 import DigitalId from '../models/DigitalId.js';
 
 // Create DigitalId

@@ -1,6 +1,9 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
+
+import swaggerUi from 'swagger-ui-express';
+import swaggerDocs from './swaggerConfig.js';
  
 import auditorRoutes from './routes/Auditor.js';
 import centralEmployeeRoutes from './routes/CentralEmployee.js';
@@ -30,12 +33,6 @@ mongoose.connect("mongodb://localhost:27017/bahirdar-id-management", {
 const app = express();
 app.use(bodyParser.json());
 
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
-
 app.use('/api/auditors', auditorRoutes);
 app.use('/api/central-employees', centralEmployeeRoutes);
 app.use('/api/emergency-contacts', emergencyContactRoutes);
@@ -52,3 +49,13 @@ app.use('/api/maintenance-employees', maintenanceEmployeeRoutes);
 app.use('/api/subcities', subcityRoutes);
 app.use('/api/security-employees', securityEmployeeRoutes);
 app.use('/api/payments', paymentRoutes);
+
+// Swagger UI setup
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+
+// Start the server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+    console.log(`Swagger docs available at http://localhost:${PORT}/api-docs`);
+});

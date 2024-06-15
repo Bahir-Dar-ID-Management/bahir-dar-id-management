@@ -1,3 +1,104 @@
+/**
+ * @swagger
+ * tags:
+ *   name: Auditors
+ *   description: API for auditors
+ */
+
+/**
+ * @swagger
+ * /auditors:
+ *   get:
+ *     summary: Retrieve a list of auditors
+ *     tags: [Auditors]
+ *     responses:
+ *       200:
+ *         description: A list of auditors
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Auditor'
+ *   post:
+ *     summary: Create a new auditor
+ *     tags: [Auditors]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Auditor'
+ *     responses:
+ *       201:
+ *         description: The created auditor
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Auditor'
+ *
+ * /auditors/{id}:
+ *   get:
+ *     summary: Get a specific auditor
+ *     tags: [Auditors]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: ID of the auditor
+ *     responses:
+ *       200:
+ *         description: A single auditor
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Auditor'
+ *       404:
+ *         description: Auditor not found
+ *   put:
+ *     summary: Update an auditor
+ *     tags: [Auditors]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: ID of the auditor
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Auditor'
+ *     responses:
+ *       200:
+ *         description: The updated auditor
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Auditor'
+ *       404:
+ *         description: Auditor not found
+ *   delete:
+ *     summary: Delete an auditor
+ *     tags: [Auditors]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: ID of the auditor
+ *     responses:
+ *       204:
+ *         description: No content
+ *       404:
+ *         description: Auditor not found
+ */
+
 import Auditor from '../models/Auditors.js';
 
 // Create Auditor

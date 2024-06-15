@@ -1,3 +1,41 @@
+/**
+ * @swagger
+ * /emergencyContacts:
+ *   get:
+ *     summary: Retrieve a list of emergency contacts
+ *     description: Retrieve a list of emergency contacts
+ *     responses:
+ *       200:
+ *         description: A list of emergency contacts
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/EmergencyContact'
+ * 
+ * /emergencyContacts/{id}:
+ *   get:
+ *     summary: Get a specific emergency contact
+ *     description: Get a specific emergency contact by ID
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: ID of the emergency contact
+ *     responses:
+ *       200:
+ *         description: A single emergency contact
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/EmergencyContact'
+ *       404:
+ *         description: Emergency contact not found
+ */
+
 import EmergencyContact from '../models/EmergencyContact.js';
 
 // Create EmergencyContact
